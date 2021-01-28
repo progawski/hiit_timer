@@ -3,7 +3,14 @@
 
 body{
     margin: 0;
-    background-image: linear-gradient(to right top, #93b9ff, #7b9cdb);
+}
+.body-bg-train{
+    background-color: #cc4747;
+    transition: background-color 1s;
+}
+.body-bg-rest{
+    background-color: #a5c0f3;
+    transition: background-color 1s;
 }
 .container{
     width: 90%;
@@ -31,7 +38,7 @@ body{
 .col:last-child{
     padding-left: 5px;
 }
-h1{
+#title{
     font-size: 10vw;
     padding: 10px;
     margin: 0;
@@ -41,7 +48,7 @@ h1{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
-time{
+#countdown{
     display: block;
     font-family: 'Squada One';
     font-size: 25vw;
@@ -61,10 +68,14 @@ button{
     outline: 0;
     color: #1f4da1;
 }
-button:active{
+button:enabled:active{
     transform: scale(0.93);
     transition: all 50ms;
     color: #1c4692;
+}
+button:disabled{
+    color: rgb(28, 70, 146, 0.2);
+    transform: scale(0.93);
 }
 button i{
     font-size: 25vw;
@@ -76,10 +87,10 @@ button i{
     button{
         max-width: 120px;
     }
-    time{
+    #countdown{
         font-size: 100px;
     }
-    h1{
+    #title{
         font-size: 40px;
     }
 }
