@@ -3,6 +3,7 @@
 
 body{
     margin: 0;
+    background-image: linear-gradient(to right top, #93b9ff, #7b9cdb);
 }
 .container{
     width: 90%;
@@ -20,7 +21,7 @@ body{
     justify-content: center;
 }
 .col{
-    width: 30%;
+    width: 100%;
     text-align: center;
     flex-direction: column;
 }
@@ -31,10 +32,10 @@ body{
     padding-left: 5px;
 }
 h1{
-    font-size: 24px;
+    font-size: 10vw;
     padding: 10px;
     margin: 0;
-    background-color: rgb(38, 102, 220);
+    background-color: #2666dc;
     font-family: 'Roboto';
     color: #fff;
     border-top-left-radius: 20px;
@@ -43,9 +44,9 @@ h1{
 time{
     display: block;
     font-family: 'Squada One';
-    font-size: 72px;
+    font-size: 25vw;
     padding: 40px 0px;
-    background-color: rgb(121, 153, 213);
+    background-image: linear-gradient(to left bottom, #81acfa, #7893c5);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -53,15 +54,53 @@ time{
     margin-top: 50px;
 }
 button{
+    margin: 0 1vw;
     border: 0;
     padding: 0;
-    margin:  0px 10px;
     background: none;
     outline: 0;
-    color: rgb(38, 102, 220);
+    color: #1f4da1;
 }
 button:active{
     transform: scale(0.93);
     transition: all 50ms;
-    color: rgb(31, 77, 161);
+    color: #1c4692;
+}
+button i{
+    font-size: 25vw;
+}
+
+/* Media queries (mobile first) */
+
+@media (min-width: 380px){
+    button{
+        max-width: 120px;
+    }
+    time{
+        font-size: 100px;
+    }
+    h1{
+        font-size: 40px;
+    }
+}
+
+@media (min-width: 480px){
+    button i{
+        font-size: 120px;
+    }
+}
+
+@media (min-width: 769px){
+    .col{
+        width: 50%;
+    }
+}
+
+@media (min-width: 1025px){
+    .col{
+        max-width: 475px;
+    }
+    button{
+        margin: 0 12px;
+    }
 }
