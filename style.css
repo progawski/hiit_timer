@@ -35,7 +35,6 @@ body{
     background-color: #a5c0f3;
     transition: background-color 1s;
 }
-
 .icons-color-rest button:disabled{
     color: #1c469233;
 }
