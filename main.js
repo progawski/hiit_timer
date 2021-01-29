@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var stopButton = document.getElementById("stop");
     var countdownText = document.getElementById("countdown");
     var title = document.getElementById("title");
+    var icons = document.getElementById("icons");
     
     var countdownInterval;
 
@@ -45,8 +46,13 @@ document.addEventListener("DOMContentLoaded", function() {
         playButton.disabled = false;
         time = trainTime;
         displayTime(time);
-        document.body.className = 'body-bg-train';
         title.textContent = 'START';
+
+        document.body.className = 'body-bg-rest';
+        icons.classList.remove("icons-color-train");
+        icons.classList.add("icons-color-rest");
+        title.className = 'title-bg-rest';
+        countdownText.className = 'countdown-bg-rest';
     });
 
 
@@ -66,11 +72,21 @@ document.addEventListener("DOMContentLoaded", function() {
         if(activity){
             time = trainTime;
             title.textContent = 'TRAIN';
+
             document.body.className = 'body-bg-train';
+            icons.classList.remove("icons-color-rest");
+            icons.classList.add("icons-color-train");
+            title.className = 'title-bg-train';
+            countdownText.className = 'countdown-bg-train';
         } else{
             time = restTime;
             title.textContent = 'REST';
+
             document.body.className = 'body-bg-rest';
+            icons.classList.remove("icons-color-train");
+            icons.classList.add("icons-color-rest");
+            title.className = 'title-bg-rest';
+            countdownText.className = 'countdown-bg-rest';
         }
 
         displayTime(time);

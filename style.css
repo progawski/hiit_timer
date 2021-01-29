@@ -4,14 +4,6 @@
 body{
     margin: 0;
 }
-.body-bg-train{
-    background-color: #cc4747;
-    transition: background-color 1s;
-}
-.body-bg-rest{
-    background-color: #a5c0f3;
-    transition: background-color 1s;
-}
 .container{
     width: 90%;
     height: 100vh;
@@ -38,11 +30,57 @@ body{
 .col:last-child{
     padding-left: 5px;
 }
+
+.body-bg-rest{
+    background-color: #a5c0f3;
+    transition: background-color 1s;
+}
+
+.icons-color-rest button:disabled{
+    color: #1c469233;
+}
+.icons-color-rest button{
+    color: #1c4692;
+}
+.icons-color-rest{
+    transition: color 1s;
+}
+.title-bg-rest{
+    background-color: #1c4692;
+    transition: background-color 1s;
+}
+.countdown-bg-rest{
+    background-color: #1c46924d;
+    transition: background-color 1s;
+}
+
+
+.body-bg-train{
+    background-color: #cc4747;
+    transition: background-color 1s;
+}
+.icons-color-train button:disabled{
+    color: #be0b0b33;
+}
+.icons-color-train button{
+    color: #be0b0b;    
+}
+.icons-color-train{
+    transition: color 1s;
+}
+.title-bg-train{
+    background-color: #be0b0b;
+    transition: background-color 1s;
+}
+.countdown-bg-train{
+    background-color: #be0b0b4d;
+    transition: background-color 1s;
+}
+
 #title{
     font-size: 10vw;
     padding: 10px;
     margin: 0;
-    background-color: #2666dc;
     font-family: 'Roboto';
     color: #fff;
     border-top-left-radius: 20px;
@@ -53,11 +91,10 @@ body{
     font-family: 'Squada One';
     font-size: 25vw;
     padding: 40px 0px;
-    background-image: linear-gradient(to left bottom, #81acfa, #7893c5);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
-.icons{
+#icons{
     margin-top: 50px;
 }
 button{
@@ -66,15 +103,12 @@ button{
     padding: 0;
     background: none;
     outline: 0;
-    color: #1f4da1;
 }
 button:enabled:active{
     transform: scale(0.93);
     transition: all 50ms;
-    color: #1c4692;
 }
 button:disabled{
-    color: rgb(28, 70, 146, 0.2);
     transform: scale(0.93);
 }
 button i{
