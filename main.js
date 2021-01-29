@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function() {
     var countdownText = document.getElementById("countdown");
     var title = document.getElementById("title");
     var icons = document.getElementById("icons");
+
+    var beep = document.getElementById("beep");
+    var voiceOne = document.getElementById("voice-one");
+    var voiceTwo = document.getElementById("voice-two");
+    var voiceThree = document.getElementById("voice-three");
     
     var countdownInterval;
 
@@ -69,6 +74,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function countdown(activity){
         
+        beep.play();
+
         if(activity){
             time = trainTime;
             title.textContent = 'TRAIN';
@@ -97,7 +104,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 time--;
                 displayTime(time); 
 
+                switch(time){
+                    case 3: voiceThree.play(); break;
+                    case 2: voiceTwo.play(); break;
+                    case 1: voiceOne.play(); break;
+                }
+
                 if(time == 0){
+            
                     clearInterval(countdownInterval);
                     if(activity){
                         countdown(0);                 
