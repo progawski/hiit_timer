@@ -93,6 +93,13 @@ html, body{
     font-family: 'Roboto';
     color: #000;
 }
+.opacity-20{
+    opacity: 0.2;
+    transition: opacity 1s;
+}
+.semicolon{
+    transition: opacity 1s;
+}
 #countdown-container{
     justify-content: center;
     border-bottom-left-radius: 20px;
@@ -121,23 +128,35 @@ html, body{
 }
 .inputs-container input:last-child{
     text-align: left;
+    direction: rtl;
 }
 input {
     border: 0;
     outline: 0;
     background-color: transparent;
     font-family: 'Squada One';
-    width: 50%;
-    text-align: center;
+    text-align: right;
+    caret-color: transparent;
+    padding: 0;
+    width: 35%;
 }
 input:disabled{
     color: #00000033;
     transition: color 1s;
 }
-input:disabled ~ .settings-title{
+input::placeholder{
     color: #00000033;
-    transition: color 1s;
 }
+.blink{
+    animation-name: blink;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+@keyframes blink {
+    0%   {opacity: 1;}
+    50%  {opacity: 0;}
+    100% {opacity: 1;}
+  }
 #icons{
     margin-top: 50px;
 }

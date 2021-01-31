@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     var trainTime = 90;
     var restTime = 30;
-    var time = trainTime;
 
     var playButton = document.getElementById("play");
     var pauseButton = document.getElementById("pause");
@@ -12,10 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
     var title = document.getElementById("title");
     var icons = document.getElementById("icons");
     var settingsTitles = document.getElementsByClassName("settings-title");
+    var inputs = document.querySelectorAll("input");
     var trainInputMin = document.getElementById("train-input-min");
     var trainInputSec = document.getElementById("train-input-sec");
     var restInputMin = document.getElementById("rest-input-min");
     var restInputSec = document.getElementById("rest-input-sec");
+    var semicolons = document.getElementsByClassName("semicolon");
 
     var beep = document.getElementById("beep");
     var voiceOne = document.getElementById("voice-one");
@@ -27,20 +28,65 @@ document.addEventListener("DOMContentLoaded", function() {
     var isPaused = false;
     var pausedActivity;
 
-    displayTime(time);
+    displayTime(trainTime);
 
-    setInputFilter(trainInputMin, function(value) {
-        return /^-?\d*$/.test(value); 
+        function isPositiveNum(input){
+            input.onkeydown = function(e) {
+                input.classList.remove('blink');
+                if(!((e.key >= 1 && e.key <= 9)
+                || e.key == 'Backspace')) {
+                    return false;
+                }
+            }
+    }
+
+    isPositiveNum(trainInputSec);
+    isPositiveNum(trainInputSec);
+    isPositiveNum(restInputMin);
+    isPositiveNum(restInputSec);
+
+    inputs.forEach(item => {
+        item.addEventListener('focus', () => {
+          item.placeholder = item.value;
+          item.value = '';
+          item.classList.add('blink');
+        });
+        item.addEventListener('focusout', () => {
+            if(item.value == ''){
+                item.value = item.placeholder;
+                item.classList.remove('blink');
+            }
+        });
     });
-    setInputFilter(trainInputSec, function(value) {
-        return /^-?\d*$/.test(value); 
+ 
+    
+    trainInputMin.addEventListener('focusout', () => {
+        trainInputMin.value = ('0' + trainInputMin.value).slice(-2);
+        trainTime = parseInt(trainInputMin.value * 60) + parseInt(trainInputSec.value);
+        displayTime(trainTime);
     });
-    setInputFilter(restInputMin, function(value) {
-        return /^-?\d*$/.test(value); 
+    trainInputSec.addEventListener('focusout', () => {
+        if(trainInputSec.value > 59){
+            trainInputSec.value = 59;
+        }
+        trainTime = parseInt(trainInputMin.value * 60) + parseInt(trainInputSec.value);
+        trainInputSec.value = ('0' + trainInputSec.value).slice(-2);
+        displayTime(trainTime);
     });
-    setInputFilter(restInputSec, function(value) {
-        return /^-?\d*$/.test(value); 
+    restInputMin.addEventListener('focusout', () => {
+        restInputMin.value = ('0' + restInputMin.value).slice(-2);
+        restTime = parseInt(restInputMin.value * 60) + parseInt(restInputSec.value);
     });
+    restInputSec.addEventListener('focusout', () => {
+        if(restInputSec.value > 59){
+            restInputSec.value = 59;
+        }      
+        restTime = parseInt(restInputMin.value * 60) + parseInt(restInputSec.value);
+        restInputSec.value = ('0' + restInputSec.value).slice(-2);
+    });
+  
+
+
 
     playButton.addEventListener('click', () => { 
         playButton.disabled = true;
@@ -48,8 +94,10 @@ document.addEventListener("DOMContentLoaded", function() {
         trainInputSec.disabled = true;
         restInputMin.disabled = true;
         restInputSec.disabled = true;
-        settingsTitles[0].style.cssText = "opacity: 0.2; transition: opacity 1s;";
-        settingsTitles[1].style.cssText = "opacity: 0.2; transition: opacity 1s;";
+        settingsTitles[0].classList.add('opacity-20');
+        settingsTitles[1].classList.add('opacity-20');
+        semicolons[0].classList.add('opacity-20');
+        semicolons[1].classList.add('opacity-20');
         if(isPaused){
             isPaused = false;
             pauseButton.disabled = false;
@@ -87,8 +135,10 @@ document.addEventListener("DOMContentLoaded", function() {
         icons.classList.add("icons-color-rest");
         title.className = 'title-bg-rest';
         countdownContainer.className = 'countdown-bg-rest';
-        settingsTitles[0].style.cssText = "opacity: 1; transition: opacity 1s;";
-        settingsTitles[1].style.cssText = "opacity: 1; transition: opacity 1s;";
+        settingsTitles[0].classList.remove('opacity-20');
+        settingsTitles[1].classList.remove('opacity-20');
+        semicolons[0].classList.remove('opacity-20');
+        semicolons[1].classList.remove('opacity-20');
     });
 
 
@@ -141,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     case 1: voiceOne.play(); break;
                 }
 
-                if(time == 0){
+                if(time <= 0){
             
                     clearInterval(countdownInterval);
                     if(activity){
