@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Squada+One&display=swap');
 
-body{
+html, body{  
     margin: 0;
+    padding: 0;
 }
 .container{
+    position: relative;
     width: 90%;
     height: 100vh;
     margin: auto;
@@ -75,7 +77,6 @@ body{
     background-color: #be0b0b4d;
     transition: background-color 1s;
 }
-
 #title{
     font-size: 10vw;
     padding: 10px;
@@ -85,13 +86,57 @@ body{
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+.settings-title{
+    font-size: 8vw;
+    padding: 10px;
+    margin: 0;
+    font-family: 'Roboto';
+    color: #000;
+}
+#countdown-container{
+    justify-content: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
 #countdown{
     display: block;
     font-family: 'Squada One';
     font-size: 25vw;
-    padding: 40px 0px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    padding-bottom: 40px;
+}
+.inputs-container{
+    color: #000;
+    font-size: 15vw;
+    font-family: 'Squada One';
+}
+.inputs-container input{
+    color: #000;
+    font-size: 15vw;
+    transition: color 1s;
+}
+.inputs-container input:first-child{
+    text-align: right;
+}
+.inputs-container input:last-child{
+    text-align: left;
+}
+input {
+    border: 0;
+    outline: 0;
+    background-color: transparent;
+    font-family: 'Squada One';
+    width: 50%;
+    text-align: center;
+}
+input:disabled{
+    color: #00000033;
+    transition: color 1s;
+}
+input:disabled ~ .settings-title{
+    color: #00000033;
+    transition: color 1s;
 }
 #icons{
     margin-top: 50px;
@@ -123,8 +168,17 @@ button i{
     #countdown{
         font-size: 100px;
     }
+    .inputs-container{
+        font-size: 72px;
+    }
+    .inputs-container input{
+        font-size: 72px;
+    }
     #title{
         font-size: 40px;
+    }
+    .settings-title{
+        font-size: 32px;
     }
 }
 

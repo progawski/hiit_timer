@@ -12,8 +12,24 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1 id="title" class="title-bg-rest">START</h1>
-                <time id="countdown" class="countdown-bg-rest">00:00</time>
+                <h1 id="title" class="title-bg-rest">SETTINGS</h1>
+                <div id="countdown-container" class="countdown-bg-rest">
+                    <time id="countdown">00:00</time>
+                    <div class="row">
+                        <div class="col">
+                            <h2 class="settings-title">TRAIN</h2>
+                            <div class="row inputs-container">
+                                <input type="text" id="train-input-min" value="01" maxlength="2"><span>:</span><input type="text" id="train-input-sec" value="30" maxlength="2">
+                            </div>                   
+                        </div>
+                        <div class="col">
+                            <h2 class="settings-title">REST</h2>
+                            <div class="row inputs-container">
+                                <input type="text" id="rest-input-min" value="00" maxlength="2"><span>:</span><input type="text" id="rest-input-sec" value="30" maxlength="2">
+                            </div>
+                        </div>
+                    </div>
+                </div>  
             </div>
         </div>
         <div id="icons" class="row icons-color-rest">
