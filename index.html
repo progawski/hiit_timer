@@ -11,32 +11,37 @@
 <body class="body-bg-rest">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <h1 id="title" class="title-bg-rest">SETTINGS</h1>
+            <div class="col-100">
+                <h1 id="title" class="title-bg-rest">SETTINGS</h1>   
                 <div id="countdown-container" class="countdown-bg-rest">
                     <time id="countdown">00:00</time>
                     <div class="row">
-                        <div class="col">
+                        <div class="col-50">
                             <h2 class="settings-title">TRAIN</h2>
                             <div class="row inputs-container">
-                                <input type="text" id="train-input-min" value="01" maxlength="2" min="0"><span class="semicolon">:</span><input type="text" id="train-input-sec" value="30" maxlength="2" min="0">
+                                <input type="number" id="train-input-min" value="01" min="0" max="99" maxlength="2" oninput="validity.valid || (value='');"><span class="semicolon">:</span><input type="number" id="train-input-sec" value="30" min="0" max="59" maxlength="2" oninput="validity.valid || (value='');">
                             </div>                   
                         </div>
-                        <div class="col">
+                        <div class="col-50">
                             <h2 class="settings-title">REST</h2>
                             <div class="row inputs-container">
-                                <input type="text" id="rest-input-min" value="00" maxlength="2"><span class="semicolon">:</span><input type="text" id="rest-input-sec" value="30" maxlength="2" min="0">
+                                <input type="number" id="rest-input-min" value="00" min="0" max="99" maxlength="2" oninput="validity.valid || (value='');"><span class="semicolon">:</span><input type="number" id="rest-input-sec" value="30" min="0" max="59" maxlength="2" oninput="validity.valid || (value='');">
                             </div>
                         </div>
                     </div>
                 </div>  
             </div>
+            <div class="col-100">
+                <div id="icons" class="row icons-color-rest">
+                    <button id="play"><i class="far fa-play-circle"></i></button>
+                    <button id="pause"><i class="far fa-pause-circle"></i></button>
+                    <button id="stop"><i class="far fa-stop-circle"></i></button>
+                </div>
+            </div>   
         </div>
-        <div id="icons" class="row icons-color-rest">
-            <button id="play"><i class="far fa-play-circle"></i></button>
-            <button id="pause"><i class="far fa-pause-circle"></i></button>
-            <button id="stop"><i class="far fa-stop-circle"></i></button>
-        </div>
+    </div>
+
+
     </div>
 
     <audio id="beep" crossOrigin="anonymous"><source src="beep.wav" type="audio/wav"></audio>

@@ -30,21 +30,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     displayTime(trainTime);
 
-        function isPositiveNum(input){
-            input.onkeydown = function(e) {
-                input.classList.remove('blink');
-                if(!((e.key >= 1 && e.key <= 9)
-                || e.key == 'Backspace')) {
-                    return false;
-                }
-            }
-    }
-
-    isPositiveNum(trainInputSec);
-    isPositiveNum(trainInputSec);
-    isPositiveNum(restInputMin);
-    isPositiveNum(restInputSec);
-
     inputs.forEach(item => {
         item.addEventListener('focus', () => {
           item.placeholder = item.value;
@@ -54,40 +39,33 @@ document.addEventListener("DOMContentLoaded", function() {
         item.addEventListener('focusout', () => {
             if(item.value == ''){
                 item.value = item.placeholder;
-                item.classList.remove('blink');
             }
         });
     });
  
-    
     trainInputMin.addEventListener('focusout', () => {
         trainInputMin.value = ('0' + trainInputMin.value).slice(-2);
         trainTime = parseInt(trainInputMin.value * 60) + parseInt(trainInputSec.value);
         displayTime(trainTime);
+        trainInputMin.classList.remove('blink');
     });
     trainInputSec.addEventListener('focusout', () => {
-        if(trainInputSec.value > 59){
-            trainInputSec.value = 59;
-        }
         trainTime = parseInt(trainInputMin.value * 60) + parseInt(trainInputSec.value);
         trainInputSec.value = ('0' + trainInputSec.value).slice(-2);
         displayTime(trainTime);
+        trainInputSec.classList.remove('blink');
     });
     restInputMin.addEventListener('focusout', () => {
         restInputMin.value = ('0' + restInputMin.value).slice(-2);
         restTime = parseInt(restInputMin.value * 60) + parseInt(restInputSec.value);
+        restInputMin.classList.remove('blink');
     });
     restInputSec.addEventListener('focusout', () => {
-        if(restInputSec.value > 59){
-            restInputSec.value = 59;
-        }      
         restTime = parseInt(restInputMin.value * 60) + parseInt(restInputSec.value);
         restInputSec.value = ('0' + restInputSec.value).slice(-2);
+        restInputSec.classList.remove('blink');
     });
   
-
-
-
     playButton.addEventListener('click', () => { 
         playButton.disabled = true;
         trainInputMin.disabled = true;
@@ -203,23 +181,4 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }, 1000);
     }
-
-    // Restricts input for the given textbox to the given inputFilter.
-    function setInputFilter(textbox, inputFilter) {
-        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
-        textbox.addEventListener(event, function() {
-            if (inputFilter(this.value)) {
-            this.oldValue = this.value;
-            this.oldSelectionStart = this.selectionStart;
-            this.oldSelectionEnd = this.selectionEnd;
-            } else if (this.hasOwnProperty("oldValue")) {
-            this.value = this.oldValue;
-            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-            } else {
-            this.value = "";
-            }
-        });
-        });
-    }
-
 });
